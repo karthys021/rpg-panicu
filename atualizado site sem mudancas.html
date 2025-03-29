@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Medieval Avançado - PNJ BR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        /* ... (mantenha o CSS anterior) ... */
+
+        .attribute-result {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            min-width: 100px;
+            text-align: right;
+            font-size: 0.9em;
+        }
+
+        .rolar-link-atributo {
+            position: absolute;
+            bottom: 5px;
+            right: 15px;
+            cursor: pointer;
+            color: var(--cor-primaria);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- ... (mantenha o container-main e cabeçalho iguais) ... -->
+
+        <!-- Atributos Secundários -->
+        <div class="row mt-3">
+            <div class="col-md-2 attribute-box">
+                <div class="attribute-result" id="result-forca"></div>
+                <label>Força</label>
+                <input type="number" id="forca" value="10">
+                <span class="rolar-link-atributo" onclick="rolarAtributo('forca')">Rolar Teste</span>
+            </div>
+            <div class="col-md-2 attribute-box">
+                <div class="attribute-result" id="result-destreza"></div>
+                <label>Destreza</label>
+                <input type="number" id="destreza" value="10">
+                <span class="rolar-link-atributo" onclick="rolarAtributo('destreza')">Rolar Teste</span>
+            </div>
+            <div class="col-md-2 attribute-box">
+                <div class="attribute-result" id="result-inteligencia"></div>
+                <label>Inteligência</label>
+                <input type="number" id="inteligencia" value="10">
+                <span class="rolar-link-atributo" onclick="rolarAtributo('inteligencia')">Rolar Teste</span>
+            </div>
+            <div class="col-md-2 attribute-box">
+                <div class="attribute-result" id="result-carisma"></div>
+                <label>Carisma</label>
+                <input type="number" id="carisma" value="10">
+                <span class="rolar-link-atributo" onclick="rolarAtributo('carisma')">Rolar Teste</span>
+            </div>
+            <div class="col-md-2 attribute-box">
+                <label>Couro</label>
+                <input type="number" id="couro" value="10">
+            </div>
+        </div>
+
+        <!-- ... (mantenha o resto igual) ... -->
+
+<script>
+// ... (mantenha as funções anteriores) ...
+
+// Nova função para rolagem de atributos
+function rolarAtributo(atributo) {
+    const valor = parseInt(document.getElementById(atributo).value) || 0;
+    const resultado = rolarDado(20);
+    const total = resultado + valor;
+    
+    const resultDiv = document.getElementById(`result-${atributo}`);
+    resultDiv.innerHTML = `
+        <strong>${total}</strong><br>
+        <small>(${resultado} + ${valor})</small>
+    `;
+    
+    // Remove o resultado após 3 segundos
+    setTimeout(() => {
+        resultDiv.innerHTML = '';
+    }, 3000);
+}
+
+// ... (mantenha o resto do código igual) ...
+</script>
+</body>
+</html>
